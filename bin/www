@@ -3,7 +3,7 @@ require('dotenv').config()
 /**
  * Module dependencies.
  */
-
+require('dotenv').config()
 var app = require('../app');
 var debug = require('debug')('weather:server');
 var http = require('http');
