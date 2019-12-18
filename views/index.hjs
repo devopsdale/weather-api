@@ -11,36 +11,49 @@
 
 
 <script>
-function geoFindMe() {
 
-  function success(position) {
-    const latitude  = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    
-  function getLoc() {
-    return [latitude, longitude];
-    }
-    var loc = getLoc();
-    var lat = loc[0];
-    var lat = lat[1];
-    console.log(getLoc());
-  }
-
-  function error() {
-    status.textContent = 'Unable to retrieve your location';
-  }
-
-  if (!navigator.geolocation) {
-    status.textContent = 'Geolocation is not supported by your browser';
-  } else {
-    status.textContent = 'Locating…';
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
-}
 
 window.onload = () => {
-    console.log('page is fully loaded');
-    console.log(geoFindMe());
+
+    function getLocation()
+     {
+      if (navigator.geolocation)
+      {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      }
+      else
+      {
+        console.log("browser doesnt support geolocation");
+      }
+    }
+
+    function showPosition(position)
+    {
+      console.log(position.coords.latitude + "," + position.coords.longitude);
+      
+      var url =  "/geo?lat="+position.coords.latitude+"&lon="+position.coords.longitude;
+      console.log(url);
+
+      var HttpClient = function() {
+          this.get = function(aUrl, aCallback) {
+              var anHttpRequest = new XMLHttpRequest();
+              anHttpRequest.onreadystatechange = function() { 
+                  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                      aCallback(anHttpRequest.responseText);
+              }
+
+              anHttpRequest.open( "GET", aUrl, true );            
+              anHttpRequest.send( null );
+          }
+      }
+
+    var client = new HttpClient();
+      client.get(url, function(response) {
+      });
+
+      }
+      
+    getLocation()
     
 };
 

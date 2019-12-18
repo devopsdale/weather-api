@@ -40,11 +40,12 @@ app.use(function(err, req, res, next) {
 });
 
 
-// GET method route
-app.get('/geo', function (req, res) {
-  console.log("geo is here")
-  res.send('GET request to the homepage')
-})
-
+// routes will go here
+app.get('/geo', function(req, res) {
+  var lat = req.param('lat');
+  var lon = req.param('lon');
+  console.log("---------------lat: "+lat+" lon: "+lon)
+  //res.send(user_id + ' ' + token + ' ' + geo);
+});
 
 module.exports = app;
