@@ -30,25 +30,16 @@ var session = require('express-session');
 
 router.get('/currently', function(req, res, next) {
 
-
   //console.log('lat: ', req.cookies.lat)
   fetch('https://api.darksky.net/forecast/'+process.env.API+'/'+req.cookies.lat+','+req.cookies.lon)
   .then(response => response.json())
   .then(data => {
-      var currently = JSON.stringify(data.currently);
-      //console.log('Location: '+lat)
-      res.send(currently);
-
-    
+      res.send(data.currently);
     })
   .catch(err => err)
 
-  //res.send("hi")
-
-
-
-
-
 });
+
+
 
 module.exports = router;

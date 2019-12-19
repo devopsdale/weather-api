@@ -7,50 +7,6 @@ var cookieParser = require('cookie-parser');
 //var session = require('express-session');
 
 router.use(cookieParser());
-//router.use(session({secret: 'weatherApiSecret', saveUninitialized: true, resave: true}));
-
-// router.use('/api', require('./api.v0/.js'));
-
-
-  // router.get('/', function(req, res, next) {
-  //   var info = req.query;
-  //   var coor = JSON.parse(info);
-  //   console.log("%%%%%%%%%");
-  //   console.log(coor);
-  //   res.render('index', { title: 'meme' });
-  // });
-
-
-// var coord = loc();
-
-
-// fetch('https://api.darksky.net/forecast/'+process.env.API+'/'+lat+','+lon)
-// .then(response => response.json())
-// .then(data => {
-//     var currently = JSON.stringify(data.currently);
-//   })
-// .catch(err => err)
-
-
-// router.get('/', function(req, res, next) {
-
-//   var info = req.query;
-//   var lat=34.0353778
-//   var lon=-84.2644238
-
-
-
-//   console.log("lat: "+lat+" lon: "+lon);
-
-//   fetch('/api/currently')
-//   .then(response => response.json())
-//   .then(data => {
-//       var currently = JSON.stringify(data.currently);
-//       console.log(currently);
-//       res.render('index' );
-    
-//     })
-//   .catch(err => err)
 
   
 /* GET users listing. */
@@ -58,19 +14,23 @@ router.get('/', function(req, res, next) {
   //console.log(req.query.lat);
   res.cookie("lat", req.query.lat);
   res.cookie("lon", req.query.lon);
+  // console.log("1st");
+  next();
+  //res.render('index');
+});
 
-  fetch('/api/currently')
+router.get('/', function(req, res, next) {
+  fetch('https://api.darksky.net/forecast/'+process.env.API+'/'+req.cookies.lat+','+req.cookies.lon)
+  //fetch('https://api.darksky.net/forecast/3d33ca9c7e52f847d713d8c3740d5f79/37.8267,-122.4233')
   .then(response => response.json())
   .then(data => {
-      var currently = JSON.stringify(data.currently);
+      console.log(icon);
+      res.render('index', {icon: data.currently.icon});
     })
-  .catch(err => err)
-
-
-  //console.log(req.session);
-
+  .catch(err => "error")
   
-  res.render('index');
 });
+
+
 
 module.exports = router;
