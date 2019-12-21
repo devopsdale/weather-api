@@ -31,10 +31,12 @@ var session = require('express-session');
 router.get('/currently', function(req, res, next) {
 
   //console.log('lat: ', req.cookies.lat)
-  fetch('https://api.darksky.net/forecast/'+process.env.API+'/'+req.cookies.lat+','+req.cookies.lon)
+  fetch('https://api.openweathermap.org/data/2.5/weather?lat='+req.cookies.lat+'&lon='+req.cookies.lon+'&units=imperial&appid='+process.env.API)
+
   .then(response => response.json())
   .then(data => {
-      res.send(data.currently);
+      var main = data.main;
+      res.send(main.temp.toString());
     })
   .catch(err => err)
 

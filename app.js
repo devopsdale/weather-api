@@ -4,13 +4,16 @@ var path = require('path');
 var logger = require('morgan');
 //var session = require('express-session');
 var cookieParser = require('cookie-parser');
-
+;
 
 
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 
 var app = express();
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 //app.use(session({secret: 'weatherApiSecret', saveUninitialized: true, resave: true}));
-
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 
@@ -41,6 +43,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 
 
