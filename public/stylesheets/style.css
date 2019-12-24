@@ -62,3 +62,23 @@ main-display{
   height: 152px;
 
 }
+
+#zip_form{
+  width: 100%;
+  color: #333333;
+  height: 150px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 10px 0;
+  align-items: center;
+  justify-content: space-around;
+  float: none;
+}
+
+.icon{
+  height: 100px;
+}
+
+.weather img {
+  height:  300px;
+}

@@ -7,39 +7,20 @@
 
   </head>
   <body>
-          <div id="zip_form" style="width: 100%;
-                                    color: #333333;
-                                    height: 150px;
-                                    margin: 0 auto;
-                                    overflow: hidden;
-                                    padding: 10px 0;
-                                    align-items: center;
-                                    justify-content: space-around;
-                                    display: {{ display }};
-                                    float: none;">
-            <form method="POST" action="/submit-form">
-              <input type="text" placeholder="Enter Zip Code" name="zip" />
-              <input  class="btn btn-info" type="submit" />
-            </form>
-          </div>
+      <div id="zip_form" style="display: {{ display }};">
+        <form method="POST" action="/submit-form">
+          <input type="text" placeholder="Enter Zip Code" name="zip" />
+          <input  class="btn btn-info" type="submit" />
+        </form>
+      </div>
 
-          <div id="weather" style="display: {{weatherdisplay}};">
+      <div class="weather" style="display: {{weatherdisplay}}; height: 100%;">
 
-            <div class="container">
-              <img src="{{url}}" alt="{{desc}}">
+            <img src="icons/{{icon}}.svg" alt="{{desc}}" class="img-fluid">
 
-            </div>
-
-
-          </div>
-          
-
-            
-
-
-
-
-
+      
+      </div>
+  
 <script>
 window.onload = () => {
     function getLocation()

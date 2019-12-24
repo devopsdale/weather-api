@@ -30,7 +30,7 @@ router.get('/', function(req, res, next) {
         console.log(data.weather)
         //var url = "https://memegen.link/cryingfloor/"+top+"_and/"+bottom+".jpg";
         var url = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
-        res.render('index', {display: "none", url: url, weatherdisplay: "flex", desc:desc });
+        res.render('index', {display: "none", icon: icon, weatherdisplay: "flex", desc:desc });
       })
     .catch(err => err)
   }
