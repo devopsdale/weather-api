@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 require('dotenv').config()
+var envs = require('envs');
+
 /**
  * Module dependencies.
  */
 require('dotenv').config()
+app.set('environment', envs('NODE_ENV', 'production')); 
 var app = require('../app');
 var debug = require('debug')('weather:server');
 var http = require('http');
