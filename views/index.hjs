@@ -7,6 +7,8 @@
 
   </head>
   <body>
+    <div class="container">
+
       <div id="zip_form" style="display: {{ display }};">
         <form method="POST" action="/submit-form">
           <input type="text" placeholder="Enter Zip Code" name="zip" />
@@ -14,12 +16,36 @@
         </form>
       </div>
 
-      <div class="weather" style="display: {{weatherdisplay}}; height: 100%;">
-
+      <div class="h-100 weather" style="display: {{weatherdisplay}}; height: 100%;">
             <img src="icons/{{icon}}.svg" alt="{{desc}}" class="img-fluid">
-
-      
       </div>
+
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Temp:</th>
+            <td>{{data.main.temp}}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Description:</th>
+            <td>{{weather.description}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Wind:</th>
+            <td>{{data.wind.speed}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Humidity:</th>
+            <td colspan="2">Larry the Bird</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+      
   
 <script>
 window.onload = () => {
