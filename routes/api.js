@@ -54,7 +54,7 @@ router.get('/currently', function(req, res, next) {
   .then(response => response.json())
   .then(data => {
       var main = data.weather;
-      res.send(main[0].description);
+      res.send(data);
     })
   .catch(err => err)
 
