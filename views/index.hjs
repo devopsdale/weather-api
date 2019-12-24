@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>weather</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-  </body>
+          <div id="zip_form" style="width: 100%;
+                                    color: #333333;
+                                    height: 150px;
+                                    margin: 0 auto;
+                                    overflow: hidden;
+                                    padding: 10px 0;
+                                    align-items: center;
+                                    justify-content: space-around;
+                                    display: {{ display }};
+                                    float: none;">
+            <form method="POST" action="/submit-form">
+              <input type="text" placeholder="Enter Zip Code" name="zip" />
+              <input  class="btn btn-info" type="submit" />
+            </form>
+          </div>
+
+          <div id="weather" style="display: {{weatherdisplay}};">
+
+            <div class="container">
+              <img src="{{url}}" alt="{{desc}}">
+
+            </div>
+
+
+          </div>
+          
+
+            
+
+
+
+
+
+<script>
+window.onload = () => {
+    function getLocation()
+     {
+      if (navigator.geolocation)
+      {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      }
+      else
+      {
+        console.log("browser doesnt support geolocation");
+      }
+    }
+    function showPosition(position)
+    {
+      console.log(position.coords.latitude + "," + position.coords.longitude);
+      var url =  "/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude;
+      var HttpClient = function() {
+          this.get = function(aUrl, aCallback) {
+              var anHttpRequest = new XMLHttpRequest();
+              anHttpRequest.onreadystatechange = function() { 
+                  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                      aCallback(anHttpRequest.responseText);
+              }
+              anHttpRequest.open( "GET", aUrl, true );            
+              anHttpRequest.send( null );
+          }
+      }
+    var client = new HttpClient();
+      client.get(url, function(response) {
+      });
+
+      }
+    getLocation()
+};
+</script>
 </html>
