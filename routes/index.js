@@ -6,7 +6,6 @@ const fetch = require('node-fetch');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
-  
 router.get('/', function(req, res, next) {
   console.log(req.cookies);
 
@@ -21,45 +20,32 @@ router.get('/', function(req, res, next) {
     fetch('https://api.openweathermap.org/data/2.5/weather?lat='+req.cookies.lat+'&lon='+req.cookies.lon+'&units=imperial&appid='+process.env.API)
     .then(response => response.json())
     .then(data => {
-        // var top = Math.round(data.main.temp);
-        // var test = data.weather.description;
         var weather = data.weather;
         var main = data.main;
         var desc = weather[0].description;
-        var icon = weather[0].icon;
-
-        
-        // var bottom = bottom.replace(" ", "_");
+        var icon = weather[0].icon;     
         console.log(data.main.temp);
-        //var url = "https://memegen.link/cryingfloor/"+top+"_and/"+bottom+".jpg";
         var url = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
         res.render('index', {display: "none", icon: icon, weatherdisplay: "flex", desc:desc , data: data, main:main, weather: weather[0]});
       })
     .catch(err => err)
   }
-  
 });
 
-router.post('/submit-form', (req, res) => {
+router.post('/cookie', (req, res) => {
   const zip = req.body.zip
   console.log(zip)
   fetch('https://api.openweathermap.org/data/2.5/weather?zip='+zip+',us&units=imperial&appid='+process.env.API)
   .then(response => response.json())
   .then(data => {
-      // var top = Math.round(data.main.temp);
-      // var test = data.weather.description;
       var main = data.weather;
       var desc = main[0].description;
       var icon = main[0].icon;
-      // var bottom = bottom.replace(" ", "_");
-      console.log(data.weather)
-      //var url = "https://memegen.link/cryingfloor/"+top+"_and/"+bottom+".jpg";
+      console.log(data)
       var url = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
       res.render('index', {display: "none", url: url, weatherdisplay: "flex", desc:desc });
     })
   .catch(err => err)
-
 })
-
 module.exports = router;
                 
