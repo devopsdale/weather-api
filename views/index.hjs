@@ -27,7 +27,8 @@
                   <img src="icons/{{icon}}.svg"  alt="{{desc}}">
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-bottom: 20%;">
+
                   <div class="col-6" style="text-align: center; display: {{ weatherdisplay }};">
                     <div class="temp">
                       <h5> <img src="icons/wi-thermometer.svg" alt="thermometer icon"> {{data.main.temp}} &#176;</h5>
@@ -45,18 +46,13 @@
                       <h5> <img src="icons/wi-strong-wind.svg" alt="wind icon"> {{data.wind.speed}} mph</h5>
                     </div>
                   </div>
-
                   <div class="col-6" style="text-align: center; display: {{ weatherdisplay }};">
                     <div class="temp">
                       <h5><img src="icons/wi-humidity.svg" alt="humidity icon"> {{main.humidity}} %</h5>
                     </div>
-                  </div>
+                  </div>                     
            </div>
-
           </div>
-
-
-
         </div>
     </div>
       

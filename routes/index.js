@@ -5,6 +5,7 @@ var router = express.Router();
 const fetch = require('node-fetch');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var moment = require('moment-timezone');
 
 router.get('/', function(req, res, next) {
   console.log(req.cookies);
@@ -23,9 +24,10 @@ router.get('/', function(req, res, next) {
         var weather = data.weather;
         var main = data.main;
         var desc = weather[0].description;
-        var icon = weather[0].icon;     
-        console.log(data.main.temp);
-        var url = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
+        var icon = weather[0].icon; 
+        console.log(data.sys.sunrise)
+        var s = new Date(data.sys.sunrise).toLocaleDateString("en-US")
+        var sys = data.sys;    
         res.render('index', {display: "none", icon: icon, weatherdisplay: "flex", desc:desc , data: data, main:main, weather: weather[0]});
       })
     .catch(err => err)
@@ -38,14 +40,18 @@ router.post('/cookie', (req, res) => {
   fetch('https://api.openweathermap.org/data/2.5/weather?zip='+zip+',us&units=imperial&appid='+process.env.API)
   .then(response => response.json())
   .then(data => {
-      var main = data.weather;
-      var desc = main[0].description;
-      var icon = main[0].icon;
-      console.log(data)
-      var url = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
-      res.render('index', {display: "none", url: url, weatherdisplay: "flex", desc:desc });
+    var weather = data.weather;
+    var main = data.main;
+    var desc = weather[0].description;
+    var icon = weather[0].icon; 
+    console.log(data.sys.sunrise)
+    var s = new Date(data.sys.sunrise).toLocaleDateString("en-US")
+    var sys = data.sys;    
+    res.render('index', {display: "none", icon: icon, weatherdisplay: "flex", desc:desc , data: data, main:main, weather: weather[0]});
     })
   .catch(err => err)
 })
+
+
 module.exports = router;
                 
