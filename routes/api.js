@@ -17,40 +17,23 @@ router.get('/cookie', function(req, res, next) {
 });
 
 
-// router.get('/cookie', function(req, res, next) {
-
-//   console.log("get endpoint is reached with coordinates-------------");
-//   fetch('https://api.openweathermap.org/data/2.5/weather?lat='+req.query.lat+'&lon='+req.query.lon+'&units=imperial&appid='+process.env.API)
-//   //fetch('https://api.openweathermap.org/data/2.5/weather?lat=33&lon=103&units=imperial&appid='+process.env.API)
-  
-//   .then(response => response.json())
-//   .then(data => {
-//       //console.log(data);
-
-      
-//       var top = Math.round(data.main.temp);
-//       var test = data.weather.description;
-//       var main = data.weather;
-//       var bottom = main[0].description;
-//       var bottom = bottom.replace(" ", "_");
-//       //ar url = "https://memegen.link/feelsgood/"+top+"_and/"+bottom+".jpg";
-//       //var url = "https://memegen.link/feelsgood/70_and/sunny.jpg";
-//       // console.log(x);
-//       var url = "https://pmcvariety.files.wordpress.com/2019/04/wu-tang-clan-e1556300913498.jpg?w=995";
-
-//       response.redirect(request.get('index', {url: url}));
-//     })
-//   .catch(err => "error")
-
-  
-// });
-
-
+// get current conditions
 router.get('/currently', function(req, res, next) {
-
-  //console.log('lat: ', req.cookies.lat)
   fetch('https://api.openweathermap.org/data/2.5/weather?lat='+req.cookies.lat+'&lon='+req.cookies.lon+'&units=imperial&appid='+process.env.API)
+  .then(response => response.json())
+  .then(data => {
+      var main = data.weather;
+      console.log(data);
+      res.send(data);
+    })
+  .catch(err => err)
 
+});
+
+
+// get hourly forecast
+router.get('/forecast', function(req, res, next) {
+  fetch('https://api.openweathermap.org/data/2.5/forecast?lat='+req.cookies.lat+'&lon='+req.cookies.lon+'&units=imperial&appid='+process.env.API)
   .then(response => response.json())
   .then(data => {
       var main = data.weather;
@@ -59,7 +42,6 @@ router.get('/currently', function(req, res, next) {
   .catch(err => err)
 
 });
-
 
 
 module.exports = router;

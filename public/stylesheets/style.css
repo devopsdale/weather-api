@@ -11,8 +11,37 @@
   float: none;
 }
 
+.current_icon{
+  text-align: center;
+  margin: 1% auto;
+  height: 18em; 
+  margin: 10% 0% -8% 0%;
+}
 
+.current_icon img{
+  height: 18em; 
+  margin-top: -10%;
+}
 .info{
   text-align: center;
   margin: 5%;
+}
+
+.info_icon{
+  height: 2em;
+  float: left;
+  text-align: center;
+}
+
+.temp img{
+  height: 4em;
+}
+
+.temp{
+  text-align: center;
+}
+
+.main{
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <div class="container">
@@ -19,34 +19,44 @@
               </form>
             </div>
 
-            <div class="info">
-                  <img src="icons/{{icon}}.svg" style="height: 20em; margin: 10% 0% 0% 0%;" alt="{{desc}}">
+            <div class="current_icon">
+                  <h3>{{data.name}}</h3>
+                  <img src="icons/{{icon}}.svg"  alt="{{desc}}">
             </div>
 
-            <div class="info" style="text-align: center;">
-              <div class="temp">
-                <h1>{{data.main.temp}} &#176;</h1>
-              </div>
-            </div>
+            <div class="container">
+              <div class="mx-auto">                 
+                  <div class="info" style="text-align: center;">
+                    <div class="temp">
+                      <h5> <img src="icons/wi-thermometer.svg" alt="thermometer icon"> {{data.main.temp}} &#176;</h5>
+                    </div>
+                  </div>
 
-            <div class="info" style="text-align: center;">
-              <div class="temp">
-                <h1>{{weather.description}}</h1>
-              </div>
-            </div>
+                  <div class="info" style="text-align: center;">              
+                    <div class="temp">
+                      <h5> <img src="icons/wi-umbrella.svg" alt="umbrella icon"> {{weather.description}}</h5>
+                    </div>                            
+                  </div>
 
-            <div class="info" style="text-align: center;">
-              <div class="temp">
-                <h1>{{data.wind.speed}} /mph</h1>
-              </div>
-            </div>
+                  <div class="info" style="text-align: center;">
+                    <div class="temp">
+                      <h5> <img src="icons/wi-strong-wind.svg" alt="wind icon"> {{data.wind.speed}} mph</h5>
+                    </div>
+                  </div>
 
-            <div class="info" style="text-align: center;">
-              <div class="temp">
-                <h1>{{main.humidity}} %</h1>
+                  <div class="info" style="text-align: center;">
+                    <div class="temp">
+                      <h5><img src="icons/wi-humidity.svg" alt="humidity icon"> {{main.humidity}} %</h5>
+                    </div>
+                  </div>
               </div>
+        
+
             </div>
           </div>
+
+
+
         </div>
     </div>
       
