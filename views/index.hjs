@@ -18,39 +18,44 @@
                 <input  class="btn btn-info" type="submit" />
               </form>
             </div>
-
             <div class="title">
-              <h3>{{data.name}}</h3>
-            </div>
+              <div class="display-4 align-text-middle text-center">{{data.name}}</div> 
 
-            <div class="current_icon" style="display: {{ weatherdisplay }}";>                
-                  <img src="icons/{{icon}}.svg"  alt="{{desc}}">
             </div>
-
+            <div class="current_icon" style="display: {{ weatherdisplay }}; ";>                
+                  <img src="icons/{{icon}}.svg"  class="img-fluid my-3" alt="{{desc}}">
+            </div>
             <div class="row" style="margin-bottom: 20%;">
-
-                  <div class="col-6" style="text-align: center; display: {{ weatherdisplay }};">
-                    <div class="temp">
-                      <h5> <img src="icons/wi-thermometer.svg" alt="thermometer icon"> {{data.main.temp}} &#176;</h5>
+              <div class="container">
+                <div class="container">
+                  <div class="row"> 
+                    <div class="col">
+                      <div class="display-1 align-text-middle text-center"> {{temp}} &#176;F</div> 
                     </div>
                   </div>
-
-                  <div class="col-6" style="text-align: center; display: {{ weatherdisplay }};">              
-                    <div class="temp">
-                      <h5> <img src="icons/wi-umbrella.svg" alt="umbrella icon"> {{weather.description}}</h5>
-                    </div>                            
-                  </div>
-
-                  <div class="col-6" style="text-align: center; display: {{ weatherdisplay }};">
-                    <div class="temp">
-                      <h5> <img src="icons/wi-strong-wind.svg" alt="wind icon"> {{data.wind.speed}} mph</h5>
+                </div>
+                <div class="container">
+                  <div class="row"> 
+                    <div class="col">
+                      <p class="display-4 text-center mt-3">{{weather.description}}</p>
                     </div>
                   </div>
-                  <div class="col-6" style="text-align: center; display: {{ weatherdisplay }};">
-                    <div class="temp">
-                      <h5><img src="icons/wi-humidity.svg" alt="humidity icon"> {{main.humidity}} %</h5>
+                </div>
+                <div class="container">
+                  <div class="row"> 
+                    <div class="col">
+                      <p class="display-4 text-center mt-3">{{data.wind.speed}} mph</p>
                     </div>
-                  </div>                     
+                  </div>
+                </div>              
+                <div class="container">
+                  <div class="row"> 
+                    <div class="col">
+                      <p class="display-4 text-center mt-3">{{main.humidity}} %</p>
+                    </div>
+                  </div>
+                </div>
+              </div>                                  
            </div>
           </div>
         </div>
