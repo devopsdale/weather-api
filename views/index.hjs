@@ -25,7 +25,7 @@
             <div class="current_icon" style="display: {{ weatherdisplay }}; ";>                
                   <img src="icons/{{icon}}.svg"  class="img-fluid my-3" alt="{{desc}}">
             </div>
-            <div class="row" style="margin-bottom: 20%;">
+            <div class="row" style="margin-bottom: 20%; display: {{ weatherdisplay }}">
               <div class="container">
                 <div class="container">
                   <div class="row"> 
