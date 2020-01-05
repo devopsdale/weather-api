@@ -4,7 +4,6 @@ var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
 
 
 

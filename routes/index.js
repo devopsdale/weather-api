@@ -4,8 +4,7 @@ var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var moment = require('moment-timezone');
+
 
 router.get('/', function(req, res, next) {
   console.log(req.cookies);
@@ -25,10 +24,10 @@ router.get('/', function(req, res, next) {
         var main = data.main;
         var desc = weather[0].description;
         var icon = weather[0].icon; 
-        console.log(data.sys.sunrise)
+        console.log(data)
         var s = new Date(data.sys.sunrise).toLocaleDateString("en-US")
         var sys = data.sys;    
-        res.render('index', {display: "none", icon: icon, weatherdisplay: "flex", desc:desc , data: data, main:main, weather: weather[0]});
+        res.render('index', {display:"none", icon:icon,  desc:desc , data:data, main:main, weather:weather[0]});
       })
     .catch(err => err)
   }
