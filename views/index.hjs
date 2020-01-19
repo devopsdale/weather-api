@@ -1,44 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>weather</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <div class="container">
-        <p>weather app</p>
+
+<head>
+  <title>weather</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/yeti_bootstrap.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+
+
+
+  <div class="container h-100">
+    <div class="row align-items-center h-100">
+      <div class="col-6 mx-auto">
+        <div class="jumbotron text-center">
+          <h2>Enter Your Zip Code</h2>
+          <form method="POST" action="/zip" >
+            <div class="form-group text-center ">
+              <input type="text" name="zip" aria-describedby="zipHelp">
+              <small id="zipHelp" class="form-text text-muted">We were unable to detect your position automatically. Is JavaScript <a href="">Learn More</a> </small>
+              <br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>          
+          </form>
+        </div>
+      </div>
     </div>
-  </body> 
+  </div>
+
+
+
+
+
+
+</body>
+
+
+
 <script>
-
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      };
-
-      function success(pos) {
-        var crd = pos.coords;
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`Accuracy: ${crd.accuracy} meters.`);
-        window.location.replace('/weather?lat='+crd.latitude+'&lon='+crd.longitude);
-
-
-      }
-
-      function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
-
-      navigator.geolocation.getCurrentPosition(success, error, options);
-            
-      
-
-
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+  function success(pos) {
+    var crd = pos.coords;
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`Accuracy: ${crd.accuracy} meters.`);
+    window.location.replace('/weather?lat=' + crd.latitude + '&lon=' + crd.longitude);
+  }
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+    console.log('javascript is enabled but we cant find your location for some other reason.');
+  }
+  navigator.geolocation.getCurrentPosition(success, error, options);  
 </script>
+
+
 </html>

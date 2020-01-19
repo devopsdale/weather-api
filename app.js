@@ -11,7 +11,6 @@ var cookieParser = require('cookie-parser');
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 var weatherRouter = require('./routes/weather');
-
 var app = express();
 
 // view engine setup

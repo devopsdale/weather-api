@@ -46,7 +46,7 @@ router.get('/hourly', function(req, res, next) {
       var list = data.list;
       var dl = data.list;
       var hourly_forecast = []
-      for (i=0; i < 8; i++){
+      for (i=0; i < 3; i++){
         var time = dl[i].dt_txt
         var temp = Math.round(dl[i].main.temp)
         var description = dl[i].weather[0].description
