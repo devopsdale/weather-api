@@ -55,8 +55,11 @@ router.post('/zip', (req, res) => {
 
 
 router.get('/test', (req, res) => {
- GetWeather(req.cookies.lat, req.cookies.lon).then(response => res.send(response));
+ GetWeather.current(req.cookies.lat,req.cookies.lon)
+ .then(response => res.send(response))
 });
+
+
 
 module.exports = router;
                 
