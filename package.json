@@ -15,7 +15,7 @@
     "express-session": "^1.17.0",
     "hjs": "~0.0.6",
     "http-errors": "~1.6.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.27",
     "morgan": "~1.9.0",
     "node-fetch": "^2.6.0",
